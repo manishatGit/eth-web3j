@@ -1,0 +1,15 @@
+- hosts: localhost
+  vars:
+    geth: "~/go-ethereum/build/bin/geth"
+    data_dir: "~/gethDataDir/"
+    rpc_host: "localhost"
+    rpc_port: "8545"
+
+  tasks:
+  - name: Initializing the blockchain
+    shell: cd {data_dir}
+    shell: "{{geth}} --datadir {{data_dir}} init {{data_dir}}/genesis.json"
+
+  - name: Starting Ethereum
+    shell: cd ~
+    shell: "{{geth}} --datadir {{data_dir}} --networkid 15 --rpc"

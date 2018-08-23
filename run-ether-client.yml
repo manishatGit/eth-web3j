@@ -1,0 +1,10 @@
+- hosts: localhost
+  vars:
+    app: "com.knoldus.eth.EthJClient"
+
+  tasks:
+  - name: Package Ethereum Java Client Application
+    shell: mvn clean package
+
+  - name: Run Application
+    shell: mvn exec:java -Dexec.mainClass={{app}}
