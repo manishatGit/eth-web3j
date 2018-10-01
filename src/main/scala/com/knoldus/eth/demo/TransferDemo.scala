@@ -3,10 +3,9 @@ package com.knoldus.eth.demo
 import java.math.BigDecimal
 
 import com.knoldus.eth.factory.Web3ClientFactory
-import com.knoldus.eth.service.BalanceService
+import com.knoldus.eth.service.{BalanceService, TransferService}
 import com.typesafe.config.ConfigFactory
 import org.web3j.crypto.{Credentials, WalletUtils}
-import org.web3j.tx.Transfer
 import org.web3j.utils.Convert
 
 object TransferDemo extends App {
@@ -23,11 +22,13 @@ object TransferDemo extends App {
 
     val balanceService = new BalanceService(web3j)
 
+    val transferService = new TransferService(web3j)
+
     println("The balance of sending account :::: " + ACCOUNT_FROM + "  is:: " + balanceService.getBalance(ACCOUNT_FROM))
 
     println("The balance of receiving account :::: " + ACCOUNT_TO + "  is:: " + balanceService.getBalance(ACCOUNT_TO))
 
-    val transactionReceipt = Transfer.sendFunds(web3j, credentials, ACCOUNT_TO, BigDecimal.valueOf(0.0001), Convert.Unit.ETHER).send
+    val transactionReceipt = transferService.transferEther(web3j, credentials, ACCOUNT_TO, BigDecimal.valueOf(0.0001))
 
     println("The balance of sending account " + ACCOUNT_FROM + "  after sending " + BigDecimal.valueOf(0.0001) + " eth is:: " + balanceService.getBalance(ACCOUNT_FROM))
 

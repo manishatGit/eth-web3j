@@ -19,3 +19,9 @@ Change the below parameters in application.conf according to your Ethereum accou
     $ mvn clean compile package
     $ java  -Dpassword=${YOUR_ACCOUT_PASSWORD} -cp target/eth-web3j-1.0-SNAPSHOT-jar-with-dependencies.jar com.knoldus.eth.TransferDemo
 ```
+
+## Library Used
+
+1. web3j: A java library which provides a reactive and functional way to interact with Ethereum clients [https://docs.web3j.io/getting_started.html]
+
+2. Infura: Ethereum Infrastructure as a Service [https://infura.io/]
