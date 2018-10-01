@@ -1,4 +1,4 @@
-package com.knoldus.eth;
+package com.knoldus.eth.demo;
 
 import org.web3j.crypto.Credentials;
 import org.web3j.crypto.WalletUtils;
